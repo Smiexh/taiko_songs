@@ -31,13 +31,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Run Custom Script
+        run: |
+          chmod +x update_songs.sh
+          ./update_songs.sh
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: 'index.html,taiko_songs.js'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
